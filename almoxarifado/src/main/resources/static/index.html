@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Almoxarifado/title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+</body>
+
+<div class="container">
+ <h1>Almoxarifado</h1>
+ <div id="livro">Carregando...</div>
+</div>
+<script>
+function carregarEquipamento() {
+    fetch('/equipamento')
+        .then(response => response.json())
+        .then(equipamento => {
+            document.getElementById('equipamento').innerHTML = `
+                <h2>${equipamento.codigo}</h2>
+                <p>Autor: ${equipamento.nome}</p>
+                <p>Disponível: ${equipamento.situacao ? 'Disponível' : 'Indisponível'}</p>
+
+                ${
+                    equipamento.situacao
+                    ? '<button class="disponivel" onclick="emprestarEquipamento()">Emprestar</button>'
+                    : '<button class="indisponivel" onclick="devolverEquipamento()">Devolver</button>'
+                }
+            `;
+        });
+    }
+
+    function emprestarEquipamento() {
+        fetch('/equipamento/emprestar')
+            .then(() => carregarEquipamento());
+    }
+
+    function devolverEquipamento() {
+        fetch('/equipamento/devolver')
+            .then(() => carregarEquipamento());
+    }
+
+    carregarEquipamento();
+</script>
+
+</body>
+</html>
