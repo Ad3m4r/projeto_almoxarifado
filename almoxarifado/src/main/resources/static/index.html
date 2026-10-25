@@ -2,25 +2,31 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Almoxarifado/title>
+    <title>Almoxarifado</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
-</body>
+<body>
 
-<div class="container">
- <h1>Almoxarifado</h1>
- <div id="livro">Carregando...</div>
-</div>
-<script>
-function carregarEquipamento() {
+    <div class="container">
+
+        <h1>Almoxarifado</h1>
+
+        <div id="equipamento">
+            Carregando...
+        </div>
+
+    </div>
+
+   <script>
+    function carregarEquipamento() {
     fetch('/equipamento')
         .then(response => response.json())
         .then(equipamento => {
             document.getElementById('equipamento').innerHTML = `
-                <h2>${equipamento.codigo}</h2>
-                <p>Autor: ${equipamento.nome}</p>
-                <p>Disponível: ${equipamento.situacao ? 'Disponível' : 'Indisponível'}</p>
+                <h2>Código: ${equipamento.codigo}</h2>
+                <p>Nome: ${equipamento.nome}</p>
+                <p>Situação: ${equipamento.situacao ? 'Disponível' : 'Indisponível'}</p>
 
                 ${
                     equipamento.situacao
