@@ -1,5 +1,11 @@
 # Sistema de Controle de Empréstimo de Equipamentos
 
+## Integrantes
+
+- Ademar Izidoro Junqueira
+- Ana Flavia Alves Oliveira
+- Maria Eduarda de Oliveira
+
 ## Apresentação
 
 Aplicação web demonstrativa para consultar e controlar o empréstimo e a devolução de um equipamento de almoxarifado. A tela exibe o código, o nome e a situação do item, oferecendo a ação correspondente: emprestar quando está disponível e devolver quando está emprestado.
